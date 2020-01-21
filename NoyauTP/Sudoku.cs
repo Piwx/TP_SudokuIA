@@ -45,7 +45,7 @@ namespace NoyauTP
             return sudoku;
         }
 
-        public int getCaseInitialSudoku(int line, int column)  //récupèreune case du sudoku initiale
+        public int getCaseInitialSudoku(int line, int column)  //récupère une case du sudoku initiale
         {
             return initialSudoku[line][column];
         }

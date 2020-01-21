@@ -44,7 +44,7 @@ namespace Solver_algo_genetic
             //If a target mask exist and has a digit for the cell, we use it.
             if (_targetSudokuBoard != null )
             {
-               // todo:utiliser le bon index return new Gene(_targetSudokuBoard.getCaseSudoku(geneIndex));
+               // todo:utiliser le bon index return new Gene(_targetSudokuBoard.getCaseSudoku(geneIndex)); doit prendre ligne et colonne comme paramètres
             }
             var rnd = RandomizationProvider.Current;
             // otherwise we use a random digit.
