@@ -13,7 +13,7 @@ namespace Solver_algo_genetic
 
 
             // Resoudre le sudoku 
-            return s;
+            return SudokuGeneticHelper.EvolveSudokuSolution(s, 5000, 100);
         }
     }
 }

@@ -44,7 +44,11 @@ namespace Solver_algo_genetic
             //If a target mask exist and has a digit for the cell, we use it.
             if (_targetSudokuBoard != null )
             {
-               // todo:utiliser le bon index return new Gene(_targetSudokuBoard.getCaseSudoku(geneIndex)); doit prendre ligne et colonne comme paramètres
+	            var existingCell = _targetSudokuBoard.getCaseSudoku(geneIndex / 9, geneIndex % 9);
+	            if (existingCell!=0)
+				{
+		            return new Gene(_targetSudokuBoard.getCaseSudoku(geneIndex / 9, geneIndex % 9));
+				}
             }
             var rnd = RandomizationProvider.Current;
             // otherwise we use a random digit.
@@ -56,14 +60,16 @@ namespace Solver_algo_genetic
             return new SudokuCellsChromosome(_targetSudokuBoard);
         }
 
-        ///// <summary>
-        ///// Builds a single Sudoku from the 81 genes
-        ///// </summary>
-        ///// <returns>A Sudoku board built from the 81 genes</returns>
-        //public IList<Sudoku> GetSudokus()
-        //{
-        //    //var sudoku = new SudokuBoard(GetGenes().Select(g => (int)g.Value));
-        //    //return new List<SudokuBoard>(new[] { sudoku });
-        //}
-    }
+		/// <summary>
+		/// Builds a single Sudoku from the 81 genes
+		/// </summary>
+		/// <returns>A Sudoku board built from the 81 genes</returns>
+		public IList<Sudoku> GetSudokus()
+		{
+			var sudokuArrays = GetGenes().Select(g=>(int) g.Value).Select((c, idx) => new {idx, c}).GroupBy(p => p.idx / 9)
+				.Select(r => r.Select(p=>p.c).ToArray()).ToArray();
+			var sudoku = new Sudoku(sudokuArrays);
+			return new List<Sudoku>(new[] { sudoku });
+		}
+	}
 }

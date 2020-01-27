@@ -9,6 +9,7 @@ namespace Solver_algo_genetic
         {
             var s = new Sudoku();
             s.newEasySudoku(0);
+			s.showSudoku();
             var solver = new SolverAlgoGenetic();
             var solution = solver.Solve(s);
             solution.showSudoku();

@@ -6,41 +6,37 @@ using GeneticSharp.Domain.Mutations;
 using GeneticSharp.Domain.Populations;
 using GeneticSharp.Domain.Selections;
 using GeneticSharp.Domain.Terminations;
+using NoyauTP;
 
 
 namespace Solver_algo_genetic
 {
-    public static class SudokuTestHelper
+    public static class SudokuGeneticHelper
     {
-        //private static readonly string _easySudokuString = "9.2..54.31...63.255.84.7.6..263.9..1.57.1.29..9.67.53.24.53.6..7.52..3.4.8..4195.";
+		
+		public static Sudoku EvolveSudokuSolution( Sudoku sudokuBoard, int populationSize, int generationNb)
+		{
+			var sudokuChromosome = new SudokuCellsChromosome(sudokuBoard);
+			var fitness = new SudokuFitness(sudokuBoard);
+			var selection = new EliteSelection();
+			var crossover = new UniformCrossover();
+			var mutation = new UniformMutation();
 
-        //public static SudokuBoard CreateBoard()
-        //{
-        //    return SudokuBoard.Parse(_easySudokuString);
-        //}
+			var population = new Population(populationSize, populationSize, sudokuChromosome);
+			var ga = new GeneticAlgorithm(population, fitness, selection, crossover, mutation)
+			{
+				Termination = new OrTermination(new ITermination[]
+				{
+					new FitnessThresholdTermination(0),
+					new GenerationNumberTermination(generationNb)
+				})
+			};
 
-        //public static double Eval(IChromosome sudokuChromosome, SudokuBoard sudokuBoard, int populationSize, double fitnessThreshold, int generationNb)
-        //{
-        //    var fitness = new SudokuFitness(sudokuBoard);
-        //    var selection = new EliteSelection();
-        //    var crossover = new UniformCrossover();
-        //    var mutation = new UniformMutation();
+			ga.Start();
 
-        //    var population = new Population(populationSize, populationSize, sudokuChromosome);
-        //    var ga = new GeneticAlgorithm(population, fitness, selection, crossover, mutation)
-        //    {
-        //        Termination = new OrTermination(new ITermination[]
-        //        {
-        //            new FitnessThresholdTermination(fitnessThreshold),
-        //            new GenerationNumberTermination(generationNb)
-        //        })
-        //    };
-
-        //    ga.Start();
-
-        //    var bestIndividual = ((ISudokuChromosome)ga.Population.BestChromosome);
-        //    var solutions = bestIndividual.GetSudokus();
-        //    return solutions.Max(solutionSudoku => fitness.Evaluate(solutionSudoku));
-        //}
-    }
+			var bestIndividual = ((SudokuCellsChromosome)ga.Population.BestChromosome);
+			return bestIndividual.GetSudokus()[0];
+			
+		}
+	}
 }

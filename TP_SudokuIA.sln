@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Liensdansants", "Liensdansa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solver_algo_genetic", "Solver_algo_genetic\Solver_algo_genetic.csproj", "{F8A98E26-C5E4-45B6-BDD2-FE83601AF187}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolverNeuralNet", "SolverNeuralNet\SolverNeuralNet.csproj", "{790EC9C3-42A0-42A7-8968-2160B38B8B69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
