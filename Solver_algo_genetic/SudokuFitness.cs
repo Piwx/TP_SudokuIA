@@ -68,11 +68,5 @@ namespace Solver_algo_genetic
 			toReturn -= cells.Count(x => targetCells[x.index] > 0 && targetCells[x.index] != x.cell); // Mask
 			return toReturn;
 		}
-
-
-
 	}
-
-
-
 }

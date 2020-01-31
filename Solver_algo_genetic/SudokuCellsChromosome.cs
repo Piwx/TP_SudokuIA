@@ -14,15 +14,22 @@ namespace Solver_algo_genetic
     {
         /// <summary>
         /// The target sudoku board to solve
+        /// Simple copy local copy of the global board
         /// </summary>
-        private readonly Sudoku _targetSudokuBoard;
+    
+        private readonly Sudoku _targetSudokuBoard; 
 
-        public SudokuCellsChromosome() : this(null)
+        /// <summary>
+        /// Simple empty constructor
+        /// Whose goal is just to create an empty object SudokuCellsChromosome
+        /// </summary>
+        public SudokuCellsChromosome() : this(null) 
         {
         }
 
         /// <summary>
         /// Constructor that accepts a Sudoku to solve
+        /// The constructor calls ReplaceGene to generate new genes for ths board
         /// </summary>
         /// <param name="targetSudokuBoard">the target sudoku to solve</param>
         public SudokuCellsChromosome(Sudoku targetSudokuBoard) : base(81)
