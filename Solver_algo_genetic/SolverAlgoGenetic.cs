@@ -10,8 +10,6 @@ namespace Solver_algo_genetic
 
         public Sudoku Solve(Sudoku s)
         {
-
-
             // Calls the solving function‡
             return SudokuGeneticHelper.EvolveSudokuSolution(s, 5000, 100);
         }

@@ -13,9 +13,10 @@ namespace Solver_algo_genetic
 {
     public static class SudokuGeneticHelper
     {
-		
+		//Function called by the Solver
 		public static Sudoku EvolveSudokuSolution( Sudoku sudokuBoard, int populationSize, int generationNb)
 		{
+            //Create a SudokuCellsChromosome from the current board
 			var sudokuChromosome = new SudokuCellsChromosome(sudokuBoard);
 			var fitness = new SudokuFitness(sudokuBoard);
 			var selection = new EliteSelection();
@@ -34,6 +35,7 @@ namespace Solver_algo_genetic
 
 			ga.Start();
 
+            //Choose the best version tested (the actual solution)
 			var bestIndividual = ((SudokuCellsChromosome)ga.Population.BestChromosome);
 			return bestIndividual.GetSudokus()[0];
 			

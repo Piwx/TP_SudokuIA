@@ -28,7 +28,7 @@ namespace Solver_algo_genetic
 		/// <param name="chromosome"></param>
 		/// <returns></returns>
 		public double Evaluate(IChromosome chromosome)
-		{
+        {
 			return Evaluate((SudokuCellsChromosome)chromosome);
 		}
 
