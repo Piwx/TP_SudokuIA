@@ -54,7 +54,7 @@ namespace Solver_algo_genetic
 	            var existingCell = _targetSudokuBoard.getCaseSudoku(geneIndex / 9, geneIndex % 9);
 	            if (existingCell!=0)
 				{
-		            return new Gene(_targetSudokuBoard.getCaseSudoku(geneIndex / 9, geneIndex % 9));
+                    return new Gene(_targetSudokuBoard.getCaseSudoku(geneIndex / 9, geneIndex % 9));
 				}
             }
             var rnd = RandomizationProvider.Current;
